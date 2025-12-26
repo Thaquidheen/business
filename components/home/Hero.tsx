@@ -105,7 +105,7 @@ export default function Hero() {
               className="text-base sm:text-lg text-gray-200 mb-4 sm:mb-6 max-w-xl drop-shadow-md"
               style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
             >
-              FAZAK Business Setup streamlines your UAE business journey with expert solutions tailored to your goals. From business registration to regulatory compliance, we provide seamless, efficient services to help you thrive in a dynamic market.
+              Starlinkbiz streamlines your UAE business journey with expert solutions tailored to your goals. From business registration to regulatory compliance, we provide seamless, efficient services to help you thrive in a dynamic market.
             </motion.p>
 
             {/* Features List */}

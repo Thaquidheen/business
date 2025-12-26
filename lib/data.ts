@@ -9,7 +9,8 @@ export const navLinks = [
 
 // Company Info
 export const companyInfo = {
-  name: "ABT Business & Financial Services",
+  name: "Starlinkbiz",
+  fullName: "ABT Business & Financial Services",
   tagline: "Your Business Journey in UAE Starts Here",
   phone: "+97150 9490768",
   email: "Info@starlinkbiz.com",

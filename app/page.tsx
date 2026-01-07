@@ -1,5 +1,6 @@
 import Hero from "@/components/home/Hero";
 import TrustedBy from "@/components/home/TrustedBy";
+import AboutSection from "@/components/home/AboutSection";
 import WhyUAE from "@/components/home/WhyUAE";
 import JurisdictionCards from "@/components/home/JurisdictionCards";
 import Stats from "@/components/home/Stats";
@@ -17,6 +18,7 @@ export default function Home() {
       <LeadPopup />
       <Hero />
       <TrustedBy />
+      <AboutSection />
       <WhyUAE />
       <JurisdictionCards />
       <Stats />

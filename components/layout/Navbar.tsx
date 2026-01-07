@@ -5,8 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
-import { navLinks, companyInfo } from "@/lib/data";
+import { Menu, X, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { navLinks, companyInfo, socialLinks } from "@/lib/data";
+
+const iconMap: { [key: string]: React.ReactNode } = {
+  Facebook: <Facebook className="w-5 h-5" />,
+  Twitter: <Twitter className="w-5 h-5" />,
+  Linkedin: <Linkedin className="w-5 h-5" />,
+  Instagram: <Instagram className="w-5 h-5" />,
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,29 +34,23 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || !isHomePage
-          ? "bg-white shadow-md py-3"
-          : "bg-dark py-4"
+          ? "bg-white shadow-md py-4"
+          : "bg-dark py-6"
       }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Left - Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-            <Image
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+            <img
               src="/images/logo/logo.png"
-              alt="Starlink Logo"
-              width={40}
-              height={40}
-              className="w-10 h-10 flex-shrink-0"
+              alt="Star Link Logo"
+              className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 object-contain"
             />
-            <span
-              className={`font-display text-lg font-bold ${
-                scrolled || !isHomePage ? "text-dark" : "text-white"
-              }`}
-            >
-              <span className="hidden md:inline">{companyInfo.name}</span>
-              <span className="md:hidden">{companyInfo.shortName}</span>
-            </span>
+            <div className="font-display font-bold">
+              <div className="text-xl md:text-2xl leading-tight text-primary">Star Link</div>
+              <div className={`text-sm leading-tight ${scrolled || !isHomePage ? "text-gray-600" : "text-gray-300"}`}>Business Solutions</div>
+            </div>
           </Link>
 
           {/* Center - Desktop Navigation */}
@@ -59,7 +60,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`font-medium transition-colors ${
+                className={`text-base font-medium transition-colors ${
                   pathname === link.href
                     ? "text-primary"
                     : scrolled || !isHomePage
@@ -72,23 +73,24 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right - CTA Section */}
-          <div className="hidden lg:flex items-center gap-5 flex-shrink-0">
-            <a
-              href={`tel:${companyInfo.phone}`}
-              className={`flex items-center gap-2 font-medium ${
-                scrolled || !isHomePage ? "text-gray-700" : "text-white"
-              }`}
-            >
-              <Phone className="w-4 h-4 text-primary" />
-              {companyInfo.phone}
-            </a>
-            <Link
-              href="/contact"
-              className="bg-primary hover:bg-primary-dark text-dark font-semibold px-5 py-2.5 rounded-lg transition-all"
-            >
-              Free Consultation
-            </Link>
+          {/* Right - Social Icons */}
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                  scrolled || !isHomePage
+                    ? "bg-gray-100 text-gray-700 hover:bg-primary hover:text-dark"
+                    : "bg-white/10 text-white hover:bg-primary hover:text-dark"
+                }`}
+                aria-label={social.name}
+              >
+                {iconMap[social.icon]}
+              </a>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -136,20 +138,20 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <hr className="border-gray-200" />
-                <a
-                  href={`tel:${companyInfo.phone}`}
-                  className="flex items-center gap-2 text-dark font-medium py-2"
-                >
-                  <Phone className="w-4 h-4 text-primary" />
-                  {companyInfo.phone}
-                </a>
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="bg-primary hover:bg-primary-dark text-dark font-semibold py-3 px-6 rounded-lg text-center"
-                >
-                  Free Consultation
-                </Link>
+                <div className="flex items-center justify-center gap-4 py-2">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-dark flex items-center justify-center transition-colors"
+                      aria-label={social.name}
+                    >
+                      {iconMap[social.icon]}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

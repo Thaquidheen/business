@@ -6,7 +6,6 @@ import { ArrowRight, Star, CheckCircle } from "lucide-react";
 import { useRef } from "react";
 import Button from "@/components/ui/Button";
 import ParticleBackground from "@/components/ui/ParticleBackground";
-import { companyInfo } from "@/lib/data";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,12 +27,12 @@ export default function Hero() {
           src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop"
           alt="Dubai Skyline"
           fill
-          className="object-cover scale-110"
+          className=" scale-110"
           priority
         />
         {/* Stronger overlay for better text readability */}
-        <div className="absolute inset-0 bg-dark/70"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-transparent"></div>
+        {/* <div className="absolute inset-0 bg-dark/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-transparent"></div> */}
       </motion.div>
 
       {/* Particle Background */}
@@ -66,11 +65,11 @@ export default function Hero() {
       </motion.div>
 
       <motion.div className="container-custom relative z-10 pt-24 sm:pt-28 md:pt-0" style={{ y: contentY, opacity }}>
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content */}
+        <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
+          {/* Centered Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
             {/* Badge */}
@@ -90,53 +89,18 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-lg"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight drop-shadow-lg"
               style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
             >
-              Start Your <span className="text-primary">UAE Business</span> Effortlessly with{" "}
-              <span className="hidden sm:inline">{companyInfo.name}</span>
-              <span className="sm:hidden">{companyInfo.shortName}</span>
+              Empowering your entrepreneurial journey in Dubai&apos;s vibrant business hub
             </motion.h1>
-
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-base sm:text-lg text-gray-200 mb-4 sm:mb-6 max-w-xl drop-shadow-md"
-              style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
-            >
-              We streamline your UAE business journey with expert solutions tailored to your goals. From business registration to regulatory compliance, we provide seamless, efficient services to help you thrive in a dynamic market.
-            </motion.p>
-
-            {/* Features List */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.5 }}
-              className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8"
-            >
-              {[
-                { num: "01", text: "Comprehensive Business Solutions" },
-                { num: "02", text: "Expert Consulting Services" },
-                { num: "03", text: "24/7 Customer Support" },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2"
-                >
-                  <span className="text-primary font-bold text-xs sm:text-sm">{item.num}</span>
-                  <span className="text-white text-xs sm:text-sm font-medium">{item.text}</span>
-                </div>
-              ))}
-            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-10"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
             >
               <Button href="/contact" size="lg" className="w-full sm:w-auto justify-center">
                 Start Free Consultation
@@ -147,54 +111,6 @@ export default function Hero() {
               </Button>
             </motion.div>
 
-          </motion.div>
-
-          {/* Right Content - Why UAE Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <div className="relative">
-              {/* Main Card */}
-              <div className="bg-dark/80 backdrop-blur-lg rounded-3xl p-8 border border-white/10 shadow-2xl">
-                <h3 className="font-display text-2xl font-bold text-white mb-6">
-                  Why Choose <span className="text-primary">UAE</span>?
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    { icon: "🌍", text: "Strategic Global Trading Hub" },
-                    { icon: "✓", text: "100% Foreign Ownership" },
-                    { icon: "💰", text: "Zero Personal Income Tax" },
-                    { icon: "🏗️", text: "World-Class Infrastructure" },
-                    { icon: "🛡️", text: "Stable & Safe Environment" },
-                  ].map((item, index) => (
-                    <motion.li
-                      key={item.text}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1 }}
-                      className="flex items-center gap-3"
-                    >
-                      <span className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-sm">
-                        {item.icon === "✓" ? <CheckCircle className="w-4 h-4 text-primary" /> : item.icon}
-                      </span>
-                      <span className="text-white">{item.text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Floating Badge */}
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -top-4 -right-4 bg-primary text-dark px-4 py-2 rounded-full font-bold text-sm"
-              >
-                Free Consultation
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </motion.div>

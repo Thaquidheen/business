@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock } from "lucide-react";
 import { companyInfo, footerLinks, socialLinks } from "@/lib/data";
 
@@ -22,15 +21,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Image
+            <div className="flex items-center gap-3 mb-4">
+              <img
                 src="/images/logo/logo.png"
-                alt="Starlink Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10"
+                alt="Star Link Logo"
+                className="w-12 h-12 md:w-14 md:h-14 object-contain"
               />
-              <span className="font-display text-xl font-bold">{companyInfo.name}</span>
+              <div className="font-display font-bold">
+                <div className="text-xl md:text-2xl leading-tight text-primary">Star Link</div>
+                <div className="text-xs md:text-sm leading-tight text-gray-300">Business Solutions FZE LLC</div>
+              </div>
             </div>
             <p className="text-gray-300 mb-6">
               Expert business setup consultants in UAE with 20+ years of experience helping

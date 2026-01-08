@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <LeadPopup />
       <Hero />
-      <TrustedBy />
+      {/* <TrustedBy /> */}
       <AboutSection />
       <WhyUAE />
       <JurisdictionCards />
